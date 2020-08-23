@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import classes from "./App.css";
-import Person from "./Person/Person";
+import Persons from "../components/Persons/Persons";
+import Cockpit from "../components/Cockpit/Cockpit";
 
 class App extends Component {
   state = {
@@ -40,42 +41,22 @@ class App extends Component {
   render() {
 
     let persons = null;
-    let btnClass = [classes.Button]
 
     if (this.state.showPersons) {
       persons = (
-        <div>
-          {this.state.persons.map((p, i) => {
-            return <Person
-              name={p.name}
-              key={p.id}
-              age={p.age}
-              click={() => this.deletePersonHandler(i)}
-              changed={(event) => this.nameChangedHandler(event, p.id)}
-            />
-          })}
-        </div>
+        <Persons 
+         persons={ this.state.persons }
+         clicked={ this.deletePersonHandler }
+         changed={ this.nameChangedHandler } />
       );
-      btnClass.push(classes.Red)
-    }
-
-    const assignedClasses = []
-
-    if (this.state.persons.length <= 2) {
-      assignedClasses.push(classes.red)
-    }
-
-    if (this.state.persons.length <= 1) {
-      assignedClasses.push(classes.bold)
     }
 
     return (
       <div className={ classes.App }>
-        <h1>HI, I'm a react app</h1>
-        <p className={assignedClasses.join(' ')}>This is really working</p>
-        <button className={ btnClass.join(' ') } onClick={this.togglePersonsHandler}>
-          {this.state.showPersons ? "Hide" : "Show"} persons
-        </button>
+        <Cockpit 
+         showPersons={ this.state.showPersons }
+         persons={ this.state.persons }
+         clicked={ this.togglePersonsHandler }  />
         {persons}
       </div>
     );
