@@ -6,3 +6,9 @@
     border: solid 1px #eee;
     box-shadow: 0 2px 3px #ddd;
 }
+
+@media (min-width: 500px) {
+	.Person {
+		width: 450px;
+	}
+}
