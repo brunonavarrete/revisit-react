@@ -4,7 +4,14 @@ import classes from './Cockpit.css'
 const cockpit = (props) => {
 
 	useEffect(() => {
-		console.log('[Cockpit.js useEffect]')
+		console.log('[Cockpit.js] useEffect')
+		setTimeout(() => {
+			alert('Saved data to cloud!')
+		}, 1000)
+	}, [])
+
+	useEffect(() => {
+		console.log('[Cockpit.js] useEffect2')
 	})
 
 	const assignedClasses = []
@@ -15,11 +22,11 @@ const cockpit = (props) => {
 		btnClass = classes.Red
 	}
 
-    if (props.persons.length <= 2) {
+    if (props.personsLength <= 2) { // personsLength instead of persons.length will help us .memo() this component since props.persons is no longer used directly in here
       assignedClasses.push(classes.red)
     }
 
-    if (props.persons.length <= 1) {
+    if (props.personsLength <= 1) { // personsLength instead of persons.length will help us .memo() this component since props.persons is no longer used directly in here
       assignedClasses.push(classes.bold)
     }
 
@@ -36,4 +43,4 @@ const cockpit = (props) => {
   	)
 }
 
-export default cockpit;
+export default React.memo(cockpit);
