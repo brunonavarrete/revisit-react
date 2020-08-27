@@ -14,6 +14,9 @@ class Person extends React.Component {
         this.inputElementRef.current.focus()
     }
 
+    // Older react
+    // ref={ inputEl => {this.inputElement = inputEl} }
+
     render() {
         return (
             <Aux>
@@ -24,8 +27,6 @@ class Person extends React.Component {
         		 onChange={ this.props.changed } 
                  ref={this.inputElementRef}
         		 value={ this.props.name } />
-                 // Older react
-                 // ref={ inputEl => {this.inputElement = inputEl} }
     		</Aux>
         )
     }
