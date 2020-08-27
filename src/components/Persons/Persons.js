@@ -1,5 +1,6 @@
 import React from 'react';
 import Person from './Person/Person'
+import withClass from '../../hoc/withClass'
 
 const persons = (props) => {
 	console.log('Persons.js rendeging...')
